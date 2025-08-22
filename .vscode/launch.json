@@ -1,0 +1,30 @@
+{
+
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "video_rotate",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "video_rotate (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "video_rotate (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "video_rotate (debug mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug"
+        }
+    ]
+}

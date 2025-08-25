@@ -83,7 +83,7 @@ class LessonsListView extends StatelessWidget {
     }
 
     return CircleAvatar(
-      backgroundColor: iconColor.withOpacity(0.1),
+      backgroundColor: iconColor.withAlpha(20),
       child: Icon(iconData, color: iconColor, size: 24),
     );
   }

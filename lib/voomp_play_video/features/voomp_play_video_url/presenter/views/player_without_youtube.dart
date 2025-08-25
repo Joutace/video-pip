@@ -57,9 +57,13 @@ class _PlayerWithoutYoutubeState extends State<PlayerWithoutYoutube> {
     if (widget.typeSource == VideoTypeSourceEnum.remote) {
       _videoPlayerController = VideoPlayerController.networkUrl(
         Uri.parse(widget.source),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
       );
     } else if (widget.typeSource == VideoTypeSourceEnum.local) {
-      _videoPlayerController = VideoPlayerController.file(File(widget.source));
+      _videoPlayerController = VideoPlayerController.file(
+        File(widget.source),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+      );
     }
 
     await Future.wait([_videoPlayerController.initialize()]);

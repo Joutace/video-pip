@@ -9,6 +9,7 @@ import 'package:video_rotate/voomp_play_video/features/voomp_play_video/presente
 import 'package:video_rotate/voomp_play_video/features/voomp_play_video_url/presenter/views/player_without_youtube.dart';
 import 'package:video_rotate/voomp_play_video/features/voomp_play_video_youtube/presenter/views/player_with_youtube.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:video_rotate/voomp_play_video/features/voomp_play_video/presenter/services/player_controller_registry.dart';
 
 class VoompPlayVideo extends StatefulWidget {
   const VoompPlayVideo({

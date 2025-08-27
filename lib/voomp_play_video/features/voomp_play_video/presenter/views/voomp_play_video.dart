@@ -55,6 +55,12 @@ class _VoompPlayVideoState extends State<VoompPlayVideo> {
           "AppleWebKit/537.36 (KHTML, like Gecko) "
           "Chrome/119.0.0.0 Safari/537.36")
       ..loadRequest(Uri.parse(url));
+
+    if (_controller != null) {
+      rootLocator<PlayerControllerCubit>().setCurrent(
+        WebViewPlayableController(_controller!),
+      );
+    }
   }
 
   String _getVimeoUrl() {
@@ -95,6 +101,9 @@ class _VoompPlayVideoState extends State<VoompPlayVideo> {
   @override
   void dispose() {
     _controller?.clearCache();
+    if (_controller != null) {
+      rootLocator<PlayerControllerCubit>().clear();
+    }
     super.dispose();
   }
 

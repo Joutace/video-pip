@@ -3,6 +3,8 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:video_rotate/voomp_play_video/features/voomp_play_video/data/models/enums/video_type_source.dart';
+import 'package:video_rotate/voomp_play_video/features/voomp_play_video/presenter/services/player_controller_registry.dart';
+import 'package:video_rotate/core/initialize.dart';
 
 class PlayerWithoutYoutube extends StatefulWidget {
   const PlayerWithoutYoutube({
@@ -93,6 +95,10 @@ class _PlayerWithoutYoutubeState extends State<PlayerWithoutYoutube> {
         ];
       },
       hideControlsTimer: const Duration(seconds: 1),
+    );
+
+    rootLocator<PlayerControllerCubit>().setCurrent(
+      VideoPlayerPlayableController(_videoPlayerController),
     );
   }
 }

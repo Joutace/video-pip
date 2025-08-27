@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_rotate/mocks/lessons.mock.dart';
+import 'package:video_rotate/views/simple_pip_mode_view.dart';
 import 'package:video_rotate/views/video_player_view.dart';
 import 'package:video_rotate/views/video_audio_background_view.dart';
 
@@ -56,7 +57,7 @@ class LessonsListView extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VideoPlayerPage(lesson: lesson),
+                    builder: (context) => SimplePipModePage(lesson: lesson),
                   ),
                 );
               },

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:video_rotate/voomp_play_video/features/voomp_play_video/presenter/services/player_controller_registry.dart';
+import 'package:video_rotate/core/initialize.dart';
 
 class PlayerWithYoutube extends StatefulWidget {
   const PlayerWithYoutube({
@@ -39,11 +41,16 @@ class _PlayerWithYoutubeState extends State<PlayerWithYoutube> {
         isLive: widget.isLive,
       ),
     );
+
+    rootLocator<PlayerControllerCubit>().setCurrent(
+      YoutubePlayableController(_controller),
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    rootLocator<PlayerControllerCubit>().clear();
     super.dispose();
   }
 

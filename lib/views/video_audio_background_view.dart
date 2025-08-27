@@ -23,9 +23,8 @@ class _VideoAudioPlayerPageState extends State<VideoAudioPlayerPage> {
   final _yt = YoutubeExplode();
 
   @override
-  Future<void> initState() async {
-    await _configureAudioSession();
-
+  initState() {
+    _configureAudioSession();
     super.initState();
   }
 
@@ -72,7 +71,6 @@ class _VideoAudioPlayerPageState extends State<VideoAudioPlayerPage> {
         : widget.lesson.source;
 
     final playing = _player.playing;
-
 
     return Scaffold(
       appBar: AppBar(

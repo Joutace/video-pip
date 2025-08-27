@@ -14,12 +14,16 @@ dependencies:
   path_provider: ^2.1.1
   youtube_player_flutter: ^9.1.2
   floating: ^6.0.0
-  
   get_it: ^8.2.0
   bloc: ^9.0.0
-  
   flutter_bloc: ^9.1.0
   webview_flutter: ^4.10.0
+  just_audio: ^0.9.40
+  audio_session: ^0.1.21
+  audio_service: ^0.18.13
+  youtube_explode_dart: ^2.3.7
+  simple_pip_mode: ^0.0.5
+ 
 
 dev_dependencies:
   flutter_test:

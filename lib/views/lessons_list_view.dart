@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_rotate/mocks/lessons.mock.dart';
-import 'package:video_rotate/views/simple_pip_mode_view.dart';
-import 'package:video_rotate/views/video_player_view.dart';
+import 'package:video_rotate/views/lesson_view_ios.dart';
 import 'package:video_rotate/views/video_audio_background_view.dart';
 
 class LessonsListView extends StatelessWidget {
@@ -38,26 +37,30 @@ class LessonsListView extends StatelessWidget {
                   Text('Media Type: ${lesson.mediaType}'),
                 ],
               ),
-              trailing: Wrap(spacing: 8, children: [
-                IconButton(
-                  tooltip: 'Play audio in background',
-                  icon: const Icon(Icons.headphones),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VideoAudioPlayerPage(lesson: lesson),
-                      ),
-                    );
-                  },
-                ),
-                const Icon(Icons.arrow_forward_ios),
-              ]),
+              trailing: Wrap(
+                spacing: 8,
+                children: [
+                  IconButton(
+                    tooltip: 'Play audio in background',
+                    icon: const Icon(Icons.headphones),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              VideoAudioPlayerPage(lesson: lesson),
+                        ),
+                      );
+                    },
+                  ),
+                  const Icon(Icons.arrow_forward_ios),
+                ],
+              ),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VideoPlayerPage(lesson: lesson),
+                    builder: (context) => LessonViewIOS(lesson: lesson),
                   ),
                 );
               },

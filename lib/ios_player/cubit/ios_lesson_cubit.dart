@@ -9,13 +9,16 @@ import 'package:video_rotate/ios_player/cubit/ios_lesson_state.dart';
 
 class IosLessonCubit extends Cubit<IosLessonState> {
   IosLessonCubit() : super(IosLessonState.initial());
+
+
+
   Future<void> resolveAndLoad(String? source) async {
     final original = source?.trim() ?? '';
 
     emit(state.copyWith(loading: BaseLoadingState.loading));
 
     try {
-      final resolved = await _resolveHlsUrl(original);
+      final resolved = await resolveHlsUrl(original);
       emit(state.copyWith(source: resolved));
     } catch (e) {
       emit(
@@ -27,7 +30,7 @@ class IosLessonCubit extends Cubit<IosLessonState> {
     }
   }
 
-  Future<String> _resolveHlsUrl(String url) async {
+  Future<String> resolveHlsUrl(String url) async {
     if (url.isEmpty) throw 'URL vazia';
 
     final uri = Uri.parse(url);

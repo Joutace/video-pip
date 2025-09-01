@@ -1,0 +1,21 @@
+name: flutter_avplayer_plugin
+description: Flutter <-> iOS AVPlayerViewController + PiP
+version: 0.0.1
+homepage: https://example.com
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        pluginClass: FlutterAvplayerPlugin
+        swiftVersion: "5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

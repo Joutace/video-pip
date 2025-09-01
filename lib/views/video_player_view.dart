@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_rotate/core/voomp_tube.dart';
 import 'package:video_rotate/mocks/lessons.mock.dart';
+import 'package:video_rotate/views/lesson_content.dart';
 import 'package:video_rotate/voomp_play_video/features/voomp_play_video/presenter/views/voomp_play_video.dart';
 import 'package:floating/floating.dart';
 import 'dart:math';
@@ -42,7 +43,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
           )
         : ImmediatePiP(
             aspectRatio: rational,
-            sourceRectHint: Rectangle<int>( 
+            sourceRectHint: Rectangle<int>(
               0,
               (screenSize.height ~/ 2) - (height ~/ 2),
               screenSize.width.toInt(),
@@ -120,7 +121,9 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                 ],
               ),
             ),
-            SizedBox(height: 212, child: VoompPlayVideo(url: videUrl)),
+            widget.lesson.source.contains('iframe')
+                ? LessonContent(content: widget.lesson.source)
+                : SizedBox(height: 212, child: VoompPlayVideo(url: videUrl)),
             Center(
               child: ElevatedButton.icon(
                 onPressed: () => enablePip(context),
@@ -131,7 +134,9 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
           ],
         ),
       ),
-      childWhenEnabled: VoompPlayVideo(url: videUrl, autoPlay: true),
+      childWhenEnabled:            widget.lesson.source.contains('iframe')
+                ? LessonContent(content: widget.lesson.source)
+                : SizedBox(height: 212, child: VoompPlayVideo(url: videUrl, autoPlay: true,)),
     );
   }
 }

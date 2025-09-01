@@ -68,7 +68,11 @@ class _PlayerWithoutYoutubeState extends State<PlayerWithoutYoutube> {
       );
     }
 
-    await Future.wait([_videoPlayerController.initialize()]);
+    try {
+      await Future.wait([_videoPlayerController.initialize()]);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
 
     _createChewieController();
     setState(() {});

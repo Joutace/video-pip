@@ -23,6 +23,9 @@ dependencies:
   audio_service: ^0.18.13
   youtube_explode_dart: ^2.3.7
   simple_pip_mode: ^1.1.0
+  flutter_widget_from_html: ^0.16.0
+  flutter_avplayer_plugin:
+    path: ./flutter_avplayer_plugin
  
 
 dev_dependencies:

@@ -57,7 +57,7 @@ class LessonsListView extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SimplePipModePage(lesson: lesson),
+                    builder: (context) => VideoPlayerPage(lesson: lesson),
                   ),
                 );
               },

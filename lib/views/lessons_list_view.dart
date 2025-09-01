@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:video_rotate/ios_player/presenter/lesson_view_ios.dart';
 import 'package:video_rotate/mocks/lessons.mock.dart';
-import 'package:video_rotate/views/lesson_view_ios.dart';
 import 'package:video_rotate/views/video_audio_background_view.dart';
 
 class LessonsListView extends StatelessWidget {

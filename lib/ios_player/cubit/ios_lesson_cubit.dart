@@ -10,8 +10,6 @@ import 'package:video_rotate/ios_player/cubit/ios_lesson_state.dart';
 class IosLessonCubit extends Cubit<IosLessonState> {
   IosLessonCubit() : super(IosLessonState.initial());
 
-
-
   Future<void> resolveAndLoad(String? source) async {
     final original = source?.trim() ?? '';
 
@@ -19,7 +17,7 @@ class IosLessonCubit extends Cubit<IosLessonState> {
 
     try {
       final resolved = await resolveHlsUrl(original);
-      emit(state.copyWith(source: resolved));
+      emit(state.copyWith(source: resolved, loading: BaseLoadingState.loaded));
     } catch (e) {
       emit(
         state.copyWith(
@@ -41,34 +39,23 @@ class IosLessonCubit extends Cubit<IosLessonState> {
 
     final host = (uri.host).toLowerCase();
 
-    // YouTube: NÃO extrair (ToS)
     if (host.contains('youtube.com') || host.contains('youtu.be')) {
       throw 'YouTube não permite extração de HLS via link público.';
     }
 
-    // Vimeo (free): sem API paga, NÃO extrair
-    if (host.contains('vimeo.com')) {
-      throw 'Vimeo (plano gratuito) não expõe HLS via link público.';
-    }
-
-    // Para os demais (ex.: MediaStream, Panda embed, páginas próprias),
-    // tentamos buscar qualquer .m3u8 no HTML.
     final hlsFromHtml = await _findM3u8InHtml(url);
     if (hlsFromHtml != null) {
       return hlsFromHtml;
     }
 
-    // Se não encontrou .m3u8, devolve o original (AVPlayer ainda pode tocar MP4)
     return url;
   }
 
-  bool _looksLikeHls(String url) {
-    return RegExp(r'\.m3u8($|\?)', caseSensitive: false).hasMatch(url);
-  }
+  bool _looksLikeHls(String url) =>
+      RegExp(r'\.m3u8($|\?)', caseSensitive: false).hasMatch(url);
 
-  bool _looksLikeDirectMedia(String url) {
-    return RegExp(r'\.(mp4|mov|m4v)($|\?)', caseSensitive: false).hasMatch(url);
-  }
+  bool _looksLikeDirectMedia(String url) =>
+      RegExp(r'\.(mp4|mov|m4v)($|\?)', caseSensitive: false).hasMatch(url);
 
   Future<String?> _findM3u8InHtml(String pageUrl) async {
     final uri = Uri.parse(pageUrl);
